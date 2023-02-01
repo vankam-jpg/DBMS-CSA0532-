@@ -1,0 +1,99 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use student;
+Database changed
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int(3)      | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| mobileno | int(15)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into student value('126','pavan','m','98564127');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value('127','lakshmi','f','98452136');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * from student;
++-------+---------+--------+-----------+
+| regno | name    | gender | mobileno  |
++-------+---------+--------+-----------+
+|   121 | teja    | f      |   9441213 |
+|   122 | bujji   | f      |  99591616 |
+|   123 | anil    | m      | 910059070 |
+|   124 | ram     | m      |  90327262 |
+|   125 | jyothi  | f      |  95113272 |
+|   126 | pavan   | m      |  98564127 |
+|   127 | lakshmi | f      |  98452136 |
++-------+---------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> update student set regno='126' where name='mani';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from student;
++-------+---------+--------+-----------+
+| regno | name    | gender | mobileno  |
++-------+---------+--------+-----------+
+|   121 | teja    | f      |   9441213 |
+|   122 | bujji   | f      |  99591616 |
+|   123 | anil    | m      | 910059070 |
+|   124 | ram     | m      |  90327262 |
+|   125 | jyothi  | f      |  95113272 |
+|   126 | pavan   | m      |  98564127 |
+|   127 | lakshmi | f      |  98452136 |
++-------+---------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> update student set name='mani' where regno='126';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-------+---------+--------+-----------+
+| regno | name    | gender | mobileno  |
++-------+---------+--------+-----------+
+|   121 | teja    | f      |   9441213 |
+|   122 | bujji   | f      |  99591616 |
+|   123 | anil    | m      | 910059070 |
+|   124 | ram     | m      |  90327262 |
+|   125 | jyothi  | f      |  95113272 |
+|   126 | mani    | m      |  98564127 |
+|   127 | lakshmi | f      |  98452136 |
++-------+---------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> delete from student where name='mani';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from student;
++-------+---------+--------+-----------+
+| regno | name    | gender | mobileno  |
++-------+---------+--------+-----------+
+|   121 | teja    | f      |   9441213 |
+|   122 | bujji   | f      |  99591616 |
+|   123 | anil    | m      | 910059070 |
+|   124 | ram     | m      |  90327262 |
+|   125 | jyothi  | f      |  95113272 |
+|   127 | lakshmi | f      |  98452136 |
++-------+---------+--------+-----------+
+6 rows in set (0.00 sec)
+
+mysql>
