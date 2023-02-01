@@ -1,0 +1,85 @@
+mysql> create database employee;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use employee;
+Database changed
+mysql> create table employee(empid int(10),name varchar(15),age int(20),salary int(100));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empid  | int(10)     | YES  |     | NULL    |       |
+| name   | varchar(15) | YES  |     | NULL    |       |
+| age    | int(20)     | YES  |     | NULL    |       |
+| salary | int(100)    | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+mysql> alter table employee
+    ->
+    -> ADD mobileno int(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee
+    -> ADD exp int(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee
+    -> DROP COLUMN age;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int(10)     | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| salary   | int(100)    | YES  |     | NULL    |       |
+| mobileno | int(20)     | YES  |     | NULL    |       |
+| exp      | int(20)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> TRUNCATE table employee;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * from employee;
+Empty set (0.00 sec)
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int(10)     | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| salary   | int(100)    | YES  |     | NULL    |       |
+| mobileno | int(20)     | YES  |     | NULL    |       |
+| exp      | int(20)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.03 sec)
+mysql> insert into employee values('12','tejaswini','700000','9441213','7');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * from employee;
++-------+-----------+--------+----------+------+
+| empid | name      | salary | mobileno | exp  |
++-------+-----------+--------+----------+------+
+|    12 | tejaswini | 700000 |  9441213 |    7 |
++-------+-----------+--------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int(10)     | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| salary   | int(100)    | YES  |     | NULL    |       |
+| mobileno | int(20)     | YES  |     | NULL    |       |
+| exp      | int(20)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
