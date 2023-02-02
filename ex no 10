@@ -1,0 +1,63 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use course;
+Database changed
+mysql> select * from course;
++-------+--------+--------------+------------------+---------+----------+
+| regno | name   | totalcourses | completedcourses | arrears | withheld |
++-------+--------+--------------+------------------+---------+----------+
+|   121 | teju   |           38 |               14 |       0 |        0 |
+|   122 | bujji  |           38 |               13 |       1 |        0 |
+|   123 | sravs  |           38 |               13 |       0 |        1 |
+|   124 | anil   |           38 |               15 |       0 |        0 |
+|   125 | aswini |           38 |               12 |       1 |        2 |
++-------+--------+--------------+------------------+---------+----------+
+5 rows in set (0.01 sec)
+
+mysql> select * from details;
+ERROR 1146 (42S02): Table 'course.details' doesn't exist
+mysql> create view details as select regno,arrears from course dob by regno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by regno' at line 1
+mysql> create view studentdetails as select name,completedcourses from course order by name;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from studentdetails;
++--------+------------------+
+| name   | completedcourses |
++--------+------------------+
+| anil   |               15 |
+| aswini |               12 |
+| bujji  |               13 |
+| sravs  |               13 |
+| teju   |               14 |
++--------+------------------+
+5 rows in set (0.00 sec)
+
+mysql> create index studentid on course(regno);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from course;
++-------+--------+--------------+------------------+---------+----------+
+| regno | name   | totalcourses | completedcourses | arrears | withheld |
++-------+--------+--------------+------------------+---------+----------+
+|   121 | teju   |           38 |               14 |       0 |        0 |
+|   122 | bujji  |           38 |               13 |       1 |        0 |
+|   123 | sravs  |           38 |               13 |       0 |        1 |
+|   124 | anil   |           38 |               15 |       0 |        0 |
+|   125 | aswini |           38 |               12 |       1 |        2 |
++-------+--------+--------------+------------------+---------+----------+
+5 rows in set (0.00 sec)
+
+mysql>
