@@ -1,0 +1,99 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use student;
+Database changed
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int(3)      | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| mobileno | int(15)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select * from student;
++-------+---------+--------+-----------+
+| regno | name    | gender | mobileno  |
++-------+---------+--------+-----------+
+|   121 | teja    | f      |   9441213 |
+|   122 | bujji   | f      |  99591616 |
+|   123 | anil    | m      | 910059070 |
+|   124 | ram     | m      |  90327262 |
+|   125 | jyothi  | f      |  95113272 |
+|   127 | lakshmi | f      |  98452136 |
++-------+---------+--------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select regno,name,mobileno from student order by gender;
++-------+---------+-----------+
+| regno | name    | mobileno  |
++-------+---------+-----------+
+|   121 | teja    |   9441213 |
+|   122 | bujji   |  99591616 |
+|   125 | jyothi  |  95113272 |
+|   127 | lakshmi |  98452136 |
+|   123 | anil    | 910059070 |
+|   124 | ram     |  90327262 |
++-------+---------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> use stmarks;
+Database changed
+mysql> select * from stmarks;
++-------+---------+-------+
+| regno | name    | marks |
++-------+---------+-------+
+|   121 | teja    |    92 |
+|   122 | bujji   |    95 |
+|   123 | anil    |    94 |
+|   124 | ram     |    90 |
+|   125 | jyothi  |    89 |
+|   127 | lakshmi |    82 |
++-------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select regno,name fron stmarks order by marks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'stmarks order by marks' at line 1
+mysql> select regno,name from stmarks order by marks;
++-------+---------+
+| regno | name    |
++-------+---------+
+|   127 | lakshmi |
+|   125 | jyothi  |
+|   124 | ram     |
+|   121 | teja    |
+|   123 | anil    |
+|   122 | bujji   |
++-------+---------+
+6 rows in set (0.00 sec)
+
+mysql> use student;
+Database changed
+mysql> select count(name),regno from student
+    -> group by regno having count(name)>0;
++-------------+-------+
+| count(name) | regno |
++-------------+-------+
+|           1 |   121 |
+|           1 |   122 |
+|           1 |   123 |
+|           1 |   124 |
+|           1 |   125 |
+|           1 |   127 |
++-------------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
